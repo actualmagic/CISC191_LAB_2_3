@@ -2,7 +2,7 @@ package edu.sdccd.cisc191;
 
 /**
  * CISC191 2.3 Multidimensional Arrays - Junior
- * @author *Your Name*
+ * @author Oliver Tran
  */
 
 
@@ -27,7 +27,13 @@ public class ArrayLab {
      * @return the maximum value in the 2d parameter array a
      */
     public static int max(int[][] a) {
-        return 0;
+        int max = Integer.MIN_VALUE;
+        for(int[] row : a) {
+            for(int i : row) {
+                max = Math.max(max, i);
+            }
+        }
+        return max;
     }
 
     /**
@@ -36,7 +42,11 @@ public class ArrayLab {
      * @return the sum of the elements in Row x of a
      */
     public static int rowSum(int[][] a, int x) {
-        return 0;
+        int sum = 0;
+        for(int i : a[x]) {
+            sum += i;
+        }
+        return sum;
     }
 
     /**
@@ -45,7 +55,13 @@ public class ArrayLab {
      * @return the sum of the elements in Column x of a (careful with rows of different lengths!)
      */
     public static int columnSum(int[][] a, int x) {
-        return 0;
+        int sum = 0;
+        for(int[] row : a) {
+            if(row.length > x) {
+                sum += row[x];
+            }
+        }
+        return sum;
     }
 
     /**
@@ -53,6 +69,12 @@ public class ArrayLab {
      * @return calculates the row sum for every row and returns each of the values in an array. Index i of the return array contains the sum of elements in row i.
      */
     public static int[] allRowSums(int[][] a) {
-        return new int[] {0};
+        int[] sums = new int[a.length];
+        for(int i=0; i<a.length; i++) {
+            for(int j=0; j<a[i].length; j++) {
+                sums[i] += a[i][j];
+            }
+        }
+        return sums;
     }
 }
